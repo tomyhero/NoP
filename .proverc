@@ -1,0 +1,3 @@
+"--exec=perl -Ilib -I. -Mt::Util"
+--color
+-Pt::lib::App::Prove::Plugin::SchemaUpdater

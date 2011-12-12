@@ -1,0 +1,10 @@
+* 準備
+
+- ./bin/devel/install.sh で依存モジュールをいれます。locallib等を利用したい場合は、ソースを手直しする必要があります。
+- NOP_ENV を指定してください。指定しない場合、後で述べますがsetup.sh で local を指定します。
+- NOP_ENVにlocal以外を指定した場合、etc/config_local.pl の ファイル名のlocal 部分を指定した名前に変更してください
+- mysqlを準備し、etc/config_local.pl 内の接続情報を更新(Databaseは作成しなくていいです)。
+- memcachedサーバを準備し、etc/config_local.pl 内の設定をお更新
+- ./bin/devel/setup.sh を実行し、環境変数設定と、データベース作成をおこなう
+- prove -lr t を実行しテストが通るか確認する
+- plackup etc/mix.psgi を実行しこのページが見えてるか確認してみる。
