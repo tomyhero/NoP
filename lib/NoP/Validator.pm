@@ -67,10 +67,10 @@ setting:
       url: 
         rule:
             - Net#url_loose
-      member_name:
+      body:
         rule:
             - String#length:
-                max : 55
+                max : 10000
                 min : 1
       p: 
         rule: 

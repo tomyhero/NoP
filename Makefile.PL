@@ -25,6 +25,8 @@ requires (
     'Text::SimpleTable' => 0,
     'HTTP::Parser::XS' => 0,
     'FindBin::libs' => 0,
+    'HTTP::Session' => 0,
+    'Data::GUID::URLSafe' => 0,
 );
 
 

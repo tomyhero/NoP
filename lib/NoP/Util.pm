@@ -3,6 +3,8 @@ use strict;
 use warnings;
 use JSON::XS();
 use Encode();
+use Data::GUID;
+use Data::GUID::URLSafe;
 use parent qw(Exporter);
 
 our @EXPORT = qw(to_json from_json);
@@ -18,5 +20,8 @@ sub to_json {
      Encode::decode('utf8',JSON::XS::encode_json( $data ) );
 }
 
+sub generate_id {
+    Data::GUID->new()->as_base64_urlsafe;
+}
 
 1;

@@ -23,7 +23,6 @@ our @EXPORT = qw(
 test_pc 
 test_api
 cleanup_database
-login
 GET HEAD PUT POST);
 
 
@@ -131,26 +130,5 @@ sub _get_tables {
     return \@tables;
 }
 
-# sample
-sub create_member {
-    my %args = @_;
-    $args{member_name} ||= '"<xmp>テスト';
-    require NoP::Model::Member;
-    my $member_obj = NoP::Model::Member->new()->create( \%args );
-    return $member_obj;
-}
-
-sub login {
-    my $member_obj = shift || create_member();
-
-    my $env = HTTP::Request->new(GET => "http://localhost/")->to_psgi;
-    my $req  = Ze::WAF::Request->new($env);
-    my $res  = $req->new_response;
-    my $session = NoP::Session->create($req,$res );
-    
-    $session->set('member_id',$member_obj->id); 
-    $session->finalize();
-    $ENV{HTTP_COOKIE} = $res->headers->header('SET-COOKIE');
-}
 
 1;

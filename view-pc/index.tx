@@ -1,69 +1,27 @@
 [% INCLUDE 'header.inc' %]
 
-<h3>NoP</h3>
+
+<section id="form">
+<form method="post">
+
+    <div class="clearfix">
+        <div class="input">
+            <textarea class="span9" rows="20" name="body"></textarea>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <label>&nbsp;</label>
+        <div class="input">
+            <input type="submit" value="ペースト it!" class="btn primary" />
+        </div>
+    </div>
+
+</form>
+</div>
+
+</section>
 
 
-<table>
-<tr>
-    <th>DB</th>
-    <td>[% IF ok_db %]OK[% ELSE %]NG[% END %]</td>
-</tr>
-<tr>
-    <th>API</th>
-    <td><div id="container-member_status">Loading...</div></td>
-</tr>
-<tr>
-    <th>CACHE</th>
-    <td>[% IF ok_cache %]OK[% ELSE %]NG[% END %]</td>
-</tr>
-</table>
-
-<h4>準備</h4>
-<ul>
-<li>./bin/devel/install.sh で依存モジュールをいれます。locallib等を利用したい場合は、ソースを手直しする必要があります。</li>
-<li>NOP_ENV を指定してください。指定しない場合、後で述べますがsetup.sh で local を指定します。</li>
-<li>NOP_ENVにlocal以外を指定した場合、etc/config_local.pl の ファイル名のlocal 部分を指定した名前に変更してください</li>
-<li>mysqlを準備し、etc/config_local.pl 内の接続情報を更新(Databaseは作成しなくていいです)。</li>
-<li>memcachedサーバを準備し、etc/config_local.pl 内の設定をお更新</li>
-<li>./bin/devel/setup.sh を実行し、環境変数設定と、データベース作成をおこなう</li>
-<li>prove -lr t を実行しテストが通るか確認する</li>
-<li>plackup etc/mix.psgi を実行しこのページが見えてるか確認してみる。</li>
-</ul>
-<p>
-
-
-</p>
-
-
-
-
-
-[% MACRO footer_content_block  BLOCK -%]
-<script>
-
-        $.ajax({
-            type: "get",
-            url: "/api/me",
-            dataType:"json",
-            success: function(json){
-                $('#container-member_status').html( $('#tmpl_member_status').template(json) );
-            }
-        });
-
-
-</script>
-[% END -%]
-
-<script type="text/html" id="tmpl_member_status">
-<% if ( is_login ) { %>
-OK <%= item.member_name %>
-<% } else { %>
-OK
-<% } %>
-</script>
-
-
-[% INCLUDE 'footer.inc' WITH
-    footer_content = footer_content_block()
-%]
+[% INCLUDE 'footer.inc' %]
 

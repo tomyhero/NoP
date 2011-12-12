@@ -1,7 +1,6 @@
-create table member (
-   member_id int unsigned not null auto_increment,
-   member_name varchar(255) not null,
-   updated_at TIMESTAMP NOT NULL,
+create table paste (
+   code varchar(255) NOT NULL,
+   body text NOT NULL,
    created_at DATETIME NOT NULL,
-   PRIMARY KEY (member_id)
+   PRIMARY KEY (code)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = 'utf8';

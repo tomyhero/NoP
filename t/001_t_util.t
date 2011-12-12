@@ -14,17 +14,4 @@ subtest 'memcahced' => sub {
 };
 
 
-subtest 'login' => sub {
-    login();
-    test_api(sub {
-        my $cb  = shift;
-        my $res = $cb->(GET "/me");
-        is($res->code,200);
-        my $data = NoP::Util::from_json($res->content);
-        is($data->{is_login} , 1 );
-    });
-
-};
-
-
 done_testing();

@@ -9,13 +9,13 @@
         master => {
             dsn => "dbi:mysql:nop_local",
             username => "dev_master",
-            password => "oreb",
+            password => "secretme",
         },
         slaves => [
             {
                 dsn => "dbi:mysql:nop_local",
                 username => "dev_slave",
-                password => "oreb",
+                password => "secretme",
             }
         ],
     },

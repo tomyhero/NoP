@@ -3,25 +3,30 @@ use Ze::Class;
 extends 'NoP::WAF::Controller';
 use NoP::ObjectDriver::DBI;
 use NoP::Cache;
+use NoP::Util;
 
 sub index {
     my ($self,$c) = @_;
 
-    eval {
-        my $dbh = NoP::ObjectDriver::DBI->driver->rw_handle;
-        $c->stash->{ok_db} = $dbh->ping;
-    };
-    if($@){
-        $c->stash->{ok_db} = 0;
+    if($c->req->method eq 'POST' ) {
+        $self->do_add($c);
     }
-
-
-    my $cache =  NoP::Cache->instance();
-
-    my $time = time;
-    $cache->set($time,'ok');
-    $c->stash->{ok_cache} = $cache->get($time);
-
 }
+
+
+sub do_add {
+    my ($self,$c) = @_;
+    my $obj = $c->model('Paste')->create( $c->req->as_fdat );
+    $c->redirect(sprintf('/paste/%s/',$obj->code));
+}
+
+sub detail {
+    my ($self,$c) = @_;
+    $c->template('detail');
+    my $obj = $c->model('Paste')->lookup( $c->args->{code} ) or return $c->not_found;
+    $c->stash->{paste_obj} = $obj;
+}
+
+
 
 EOC;

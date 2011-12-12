@@ -1,0 +1,18 @@
+[% INCLUDE 'header.inc' %]
+
+
+<h3>[% paste_obj.created_at %]</h3>
+
+<pre class="prettyprint linenums">
+[% paste_obj.body %]
+</pre>
+
+
+
+[% MACRO footer_content_block  BLOCK -%]
+[% END -%]
+
+[% INCLUDE 'footer.inc' WITH
+    footer_content = footer_content_block()
+%]
+
