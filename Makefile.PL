@@ -27,6 +27,9 @@ requires (
     'FindBin::libs' => 0,
     'HTTP::Session' => 0,
     'Data::GUID::URLSafe' => 0,
+    'Server::Starter' => 0,
+    'Starman' => 0,
+    'Net::Server::SS::PreFork' => 0
 );
 
 
