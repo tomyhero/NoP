@@ -4,7 +4,7 @@
 
       <div class="container">
         <p class="pull-right">
-            <a href="">NoP</a> Powered by <a href="https://github.com/tomyhero/Ze">Ze</a>
+            <a href="https://github.com/tomyhero/NoP">NoP</a> Powered by <a href="https://github.com/tomyhero/Ze">Ze</a>
         </p>
       </div>
     </footer>
