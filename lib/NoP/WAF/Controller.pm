@@ -3,7 +3,7 @@ use Ze::Class;
 use Try::Tiny;
 extends 'Ze::WAF::Controller';
 
-sub EXCECUTE {
+sub EXECUTE {
     my( $self, $c, $action ) = @_;
 
     try {
